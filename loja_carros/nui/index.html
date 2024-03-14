@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <link rel="stylesheet" href="style/estilo.css">
+
+    <title>Loja de Carros</title>
+</head>
+<body>
+
+    <div id="app">
+
+        <div v-if="show">
+
+            <button @click="p = 'lista_carros'">Loja de Carros</button>
+            <button @click="p = 'meus_carros'">Meus Carros</button>
+
+            <div v-if="p == 'lista_carros'"> 
+                <div class="titulo">
+                    <h1>Carros da Loja</h1>
+                </div>    
+        
+        
+                <div class="carros" v-for="c in carros">
+                    {{ c.nomeVitrine }}
+                    <img :src="c.url_foto" />
+                    <button @click="test_driver(c)">Test Driver</button>
+                    <button @click="comprar_carro(c)">Comprar</button>
+                </div>
+
+            </div>
+
+            <div v-if="p == 'meus_carros'"> 
+                <div class="titulo">
+                    <h1>Meus Carros</h1>
+                </div>    
+        
+        
+                <div class="carros" v-for="c in meus_carros">
+                    {{ c.nomeVitrine }} <br />
+                    Valor {{ c.preco }}  e ao vender vc recebe {{ p_venda }} 
+                    <img :src="c.url_foto" />
+                    <button @click="transferir_carro(c)">Transferir</button>
+                    <button @click="vender_carro(c)">Vender</button>
+                </div>
+
+            </div>
+            
+
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+    
+</body>
+</html>
